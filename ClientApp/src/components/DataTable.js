@@ -1,6 +1,8 @@
 ﻿import React, { Component } from 'react';
 import { Table, Button } from 'reactstrap';
 import ClientFormModal from './ClientFormModal';
+import SkillDropdown from './SkillDropdown';
+
 
 export default class DataTable extends Component {
     deleteItem = (id) => {
@@ -31,7 +33,8 @@ export default class DataTable extends Component {
                             <th>Last name</th>
                             <th>Date of birth</th>
                             <th>Contact Number</th>
-                            <th>email</th>
+                            <th>Email</th>
+                            <th>Skills</th>
                             <th style={{ textAlign: 'center' }}>Actions</th>
                         </tr>
                     </thead>
@@ -50,6 +53,11 @@ export default class DataTable extends Component {
                                     <td>{item.dateOfBirth}</td>
                                     <td>{item.contactNumber}</td>
                                     <td>{item.email}</td>
+                                    <td>
+                                        <div>
+                                            <SkillDropdown/>
+                                        </div>
+                                    </td>
                                     <td align="center">
                                         <div className="d-flex justify-content-between">
                                             <ClientFormModal

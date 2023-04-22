@@ -20,7 +20,8 @@ namespace hrPlatform.Services
                 LastName = "Vojinovic",
                 Id = count++,
                 DateOfBirth = "2001-14-10",
-                Email = "mihailonvojinovic@gmail.com"
+                Email = "mihailonvojinovic@gmail.com",
+                Skills = new List<CandidateSkill>()
             });
             jobCandidates.Add(new jobCandidate
             {
@@ -29,7 +30,8 @@ namespace hrPlatform.Services
                 LastName = "Vojinovic",
                 Id = count++,
                 DateOfBirth = "2000-29-10",
-                Email = "anastasija@gmail.com"
+                Email = "anastasija@gmail.com",
+                Skills = new List<CandidateSkill>()
             });
         }
 
