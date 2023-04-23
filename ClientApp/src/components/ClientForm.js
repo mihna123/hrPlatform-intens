@@ -21,8 +21,8 @@ export default class ClientForm extends Component {
 
     componentDidMount() {
         if (this.props.client) {
-            const { id, candidateName, lastName, dateOfBirth, contactNumber, email, skills } = this.props.client;
-            this.setState({ id, candidateName, lastName, dateOfBirth, contactNumber, email, skills });
+            const { id, candidateName, lastName, dateOfBirth, contactNumber, email } = this.props.client;
+            this.setState({ id, candidateName, lastName, dateOfBirth, contactNumber, email});
         }
     }
 
@@ -106,7 +106,10 @@ export default class ClientForm extends Component {
                     <Label for="skills">Skills:</Label>
                     <SkillCheckBox
                         client={this.state}
-                        updateClient={(newC) => this.setState(newC)} />
+                        updateClient={(newC) => {
+                            this.setState(newC);
+                            //console.log(this.state);
+                        }} />
                     <div style={{ paddingTop:'15px' }}>
                         {button}
                     </div>

@@ -24,7 +24,8 @@ export default class SkillCheckBox extends Component {
     
     checkBoxCheck = (skill) => {
         const client = { ...this.props.client };
-        fetch(`http://localhost:18096/api/jobCandidate/addSkill/${client.id}`, {
+        console.log(client);
+        /*fetch(`http://localhost:18096/api/jobCandidate/addSkill/${client.id}`, {
             method: 'post',
             headers: {
                 'Content-Type': 'application/json'
@@ -36,32 +37,35 @@ export default class SkillCheckBox extends Component {
                 this.props.updateClient(client);
             })
             .catch(err => console.log(err));
-        
-        //if (client.skills == null) {
-        //    client.skills = [skill];
-        //} else {
-        //    client.skills.push(skill);
-        //}
-        //console.log(client);
-        //this.props.updateClient(client);
+        */
+        if (client.skills == null) {
+            client.skills = [skill];
+        } else {
+            client.skills.push(skill);
+        }
+        this.props.updateClient(client);
     }
-    /*
+    
     checkBoxUnCheck = (skill) => {
         const client = { ...this.props.client };
         client.skills = client.skills.filter(x => x.id !== skill.id);
         this.props.updateClient(client);
     }
-
+    
     isChecked = (id) => {
         const skills = this.props.client.skills;
+        console.log(skills);
         let object = skills.find(x => x.id == id);
         if (object == null) {
+            console.log("false");
             return false;
+            
         } else {
+            console.log("true");
             return true;
         }
     }
-    */
+    
     render() {
         return (
             <div>{
@@ -74,10 +78,10 @@ export default class SkillCheckBox extends Component {
                                         this.checkBoxCheck(skill);
                                     }
                                         
-                                    //else
-                                      //  this.checkBoxUnCheck(skill);
-                                }}/*
-                                checked={this.isChecked(skill.id)}*/ />
+                                    else
+                                        this.checkBoxUnCheck(skill);
+                                }}
+                                checked={this.isChecked(skill.id)}/>
                             <Label check>{skill.skillName}</Label>
                         </FormGroup>
                     )
