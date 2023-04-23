@@ -1,4 +1,4 @@
-﻿import React, { Component } from 'react';
+﻿import React, { Component,Fragment } from 'react';
 import {
     Dropdown,
     DropdownToggle,
@@ -22,11 +22,16 @@ export default class SkillDropdown extends Component {
                 <Dropdown isOpen={this.state.isOpen} toggle={this.toggle} direction="down">
                     <DropdownToggle caret>Show</DropdownToggle>
                     <DropdownMenu>
-                    {skills == null || skills.length <= 0 ?
-                        <DropdownItem>No skills yet</DropdownItem> :
-                        skills.map(skill => {
-                            <DropdownItem text>{skill.skillName}</DropdownItem>
-                        })}
+                        {skills == null || skills.length <= 0 ?
+                            <DropdownItem>No skills yet</DropdownItem> :
+                            skills.map(skill => {
+                                return (
+                                    <Fragment key={ skill.id }>
+                                        <DropdownItem text>{skill.skillName}</DropdownItem>
+                                        <DropdownItem divider />
+                                    </Fragment>
+                                )
+                            })}
                     </DropdownMenu>
                 </Dropdown>
                 

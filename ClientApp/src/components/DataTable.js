@@ -55,7 +55,8 @@ export default class DataTable extends Component {
                                     <td>{item.email}</td>
                                     <td>
                                         <div>
-                                            <SkillDropdown/>
+                                            <SkillDropdown
+                                                skills={ item.skills } />
                                         </div>
                                     </td>
                                     <td align="center">

@@ -9,7 +9,7 @@ namespace hrPlatform.Services
     public class CandidateSkillService
     {
         private List<CandidateSkill> skillList = new List<CandidateSkill>();
-        private int count = 0;
+        private int count = 1;
         public CandidateSkillService()
         {
             skillList.Add(new CandidateSkill { Id = count++, SkillName = "Java programming" });

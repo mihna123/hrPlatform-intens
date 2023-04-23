@@ -67,6 +67,7 @@ namespace hrPlatform.Services
             toBeUpdated.DateOfBirth = jc.DateOfBirth;
             toBeUpdated.LastName = jc.LastName;
             toBeUpdated.Name = jc.Name;
+            toBeUpdated.Skills = jc.Skills;
         }
 
         public List<jobCandidate> Search(string prompt)
@@ -77,6 +78,14 @@ namespace hrPlatform.Services
                 if(jc.Name == prompt || jc.LastName == prompt)
                 {
                     rez.Add(jc);
+                }
+                foreach(CandidateSkill cs in jc.Skills)
+                {
+                    if(cs.SkillName == prompt)
+                    {
+                        rez.Add(jc);
+                        break;
+                    }
                 }
             }
             return rez;

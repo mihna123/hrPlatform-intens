@@ -1,5 +1,6 @@
 ﻿import React, { Component } from 'react';
 import { Button, Form, FormGroup, Input, Label } from 'reactstrap';
+import SkillCheckBox from './SkillCheckBox';
 
 export default class ClientForm extends Component {
     state = {
@@ -9,6 +10,7 @@ export default class ClientForm extends Component {
         dateOfBirth: '',
         contactNumber: '',
         email: '',
+        skills: []
     }
 
     onChange = (e) => {
@@ -19,8 +21,8 @@ export default class ClientForm extends Component {
 
     componentDidMount() {
         if (this.props.client) {
-            const { id, name, lastName, dateOfBirth, contactNumber, email } = this.props.client;
-            this.setState({ id, name, lastName, dateOfBirth, contactNumber, email });
+            const { id, name, lastName, dateOfBirth, contactNumber, email, skills } = this.props.client;
+            this.setState({ id, name, lastName, dateOfBirth, contactNumber, email, skills });
         }
     }
 
@@ -36,7 +38,8 @@ export default class ClientForm extends Component {
                 lastName: this.state.lastName,
                 dateOfBirth: this.state.dateOfBirth,
                 contactNumber: this.state.contactNumber,
-                email: this.state.email
+                email: this.state.email,
+                skills: this.state.skills
             })
         }).then(res => res.json())
             .then(client => {
@@ -57,7 +60,8 @@ export default class ClientForm extends Component {
                 lastName: this.state.lastName,
                 dateOfBirth: this.state.dateOfBirth,
                 contactNumber: this.state.contactNumber,
-                email: this.state.email
+                email: this.state.email,
+                skills: this.state.skills
             })
         }).then(res => res.json())
             .then((client) => {
@@ -98,7 +102,15 @@ export default class ClientForm extends Component {
                         <Label for="email">Email:</Label>
                         <Input type="email" name="email" onChange={this.onChange} value={this.state.email === null ? '' : this.state.email}></Input>
                     </FormGroup>
-                    {button}
+                    
+                    <Label for="skills">Skills:</Label>
+                    <SkillCheckBox
+                        client={this.state}
+                        updateClient={(newC) => this.setState(newC)} />
+                    <div style={{ paddingTop:'15px' }}>
+                        {button}
+                    </div>
+                    
                 </Form>
             </div>
         )
