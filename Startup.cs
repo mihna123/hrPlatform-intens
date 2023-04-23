@@ -24,8 +24,8 @@ namespace hrPlatform
         {
 
             services.AddControllersWithViews();
-            services.AddSingleton<JobCandidateService>();
-            services.AddSingleton<CandidateSkillService>();
+            services.AddScoped<JobCandidateService>();
+            services.AddScoped<CandidateSkillService>();
             services.AddDbContext<MyDbContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));

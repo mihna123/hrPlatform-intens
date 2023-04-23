@@ -16,12 +16,7 @@ export default class AppHeader extends Component {
                             </NavItem>
                             <NavItem>
                                 <NavLink onClick={this.props.skillClick} href="/">Skills</NavLink>
-                            </NavItem>
-                            <NavItem>
-                                <NavLink href="/">About</NavLink>
-                            </NavItem>
-                        
-                        
+                            </NavItem>                   
                     </Nav>
                 </Navbar>
             </div>

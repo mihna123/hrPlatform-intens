@@ -48,7 +48,7 @@ export default class DataTable extends Component {
                                     <th scope="row">
                                         {item.id}
                                     </th>
-                                    <td>{item.name}</td>
+                                    <td>{item.candidateName}</td>
                                     <td>{item.lastName}</td>
                                     <td>{item.dateOfBirth}</td>
                                     <td>{item.contactNumber}</td>

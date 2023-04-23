@@ -21,13 +21,31 @@ export default class SkillCheckBox extends Component {
             .catch(err => console.log(err));
     }
     
-
+    
     checkBoxCheck = (skill) => {
         const client = { ...this.props.client };
-        client.skills.push(skill);
-        this.props.updateClient(client);
+        fetch(`http://localhost:18096/api/jobCandidate/addSkill/${client.id}`, {
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(skill)
+        })
+            .then(response => response.json())
+            .then(client => {
+                this.props.updateClient(client);
+            })
+            .catch(err => console.log(err));
+        
+        //if (client.skills == null) {
+        //    client.skills = [skill];
+        //} else {
+        //    client.skills.push(skill);
+        //}
+        //console.log(client);
+        //this.props.updateClient(client);
     }
-
+    /*
     checkBoxUnCheck = (skill) => {
         const client = { ...this.props.client };
         client.skills = client.skills.filter(x => x.id !== skill.id);
@@ -43,7 +61,7 @@ export default class SkillCheckBox extends Component {
             return true;
         }
     }
-
+    */
     render() {
         return (
             <div>{
@@ -56,10 +74,10 @@ export default class SkillCheckBox extends Component {
                                         this.checkBoxCheck(skill);
                                     }
                                         
-                                    else
-                                        this.checkBoxUnCheck(skill);
-                                }}
-                                checked={this.isChecked(skill.id)} />
+                                    //else
+                                      //  this.checkBoxUnCheck(skill);
+                                }}/*
+                                checked={this.isChecked(skill.id)}*/ />
                             <Label check>{skill.skillName}</Label>
                         </FormGroup>
                     )

@@ -39,6 +39,12 @@ namespace hrPlatform.Controllers
         {
             return CreatedAtAction("Get", new { id = jc.Id }, jobCandidateService.Create(jc));
         }
+        [HttpPost("addSkill/{candidateId}")]
+        public async Task<ActionResult> Post(int candidateId, [FromBody]CandidateSkill cs)
+        {
+            return Ok(jobCandidateService.AddSkill(candidateId, cs));
+        }
+
         [HttpPut("{id}")]
         public async Task<ActionResult> Put(int id, [FromBody]jobCandidate jc)
         {

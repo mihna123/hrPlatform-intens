@@ -5,7 +5,7 @@ import SkillCheckBox from './SkillCheckBox';
 export default class ClientForm extends Component {
     state = {
         id: 0,
-        name: '',
+        candidateName: '',
         lastName: '',
         dateOfBirth: '',
         contactNumber: '',
@@ -21,8 +21,8 @@ export default class ClientForm extends Component {
 
     componentDidMount() {
         if (this.props.client) {
-            const { id, name, lastName, dateOfBirth, contactNumber, email, skills } = this.props.client;
-            this.setState({ id, name, lastName, dateOfBirth, contactNumber, email, skills });
+            const { id, candidateName, lastName, dateOfBirth, contactNumber, email, skills } = this.props.client;
+            this.setState({ id, candidateName, lastName, dateOfBirth, contactNumber, email, skills });
         }
     }
 
@@ -34,7 +34,7 @@ export default class ClientForm extends Component {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                name: this.state.name,
+                candidateName: this.state.candidateName,
                 lastName: this.state.lastName,
                 dateOfBirth: this.state.dateOfBirth,
                 contactNumber: this.state.contactNumber,
@@ -56,7 +56,7 @@ export default class ClientForm extends Component {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                name: this.state.name,
+                candidateName: this.state.candidateName,
                 lastName: this.state.lastName,
                 dateOfBirth: this.state.dateOfBirth,
                 contactNumber: this.state.contactNumber,
@@ -82,8 +82,8 @@ export default class ClientForm extends Component {
             <div>
                 <Form onSubmit={this.props.client ? this.submitEdit : this.submitNew}>
                     <FormGroup>
-                        <Label for="name">Name:</Label>
-                        <Input type="text" name="name" onChange={this.onChange} value={this.state.name === null ? '' : this.state.name}></Input>
+                        <Label for="cndidateName">Name:</Label>
+                        <Input type="text" name="candidateName" onChange={this.onChange} value={this.state.candidateName === null ? '' : this.state.candidateName}></Input>
                     </FormGroup>
                     <FormGroup>
                         <Label for="lastName">Last name:</Label>
