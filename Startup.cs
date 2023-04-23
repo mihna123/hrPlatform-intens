@@ -1,7 +1,9 @@
+using hrPlatform.DAL;
 using hrPlatform.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -24,6 +26,10 @@ namespace hrPlatform
             services.AddControllersWithViews();
             services.AddSingleton<JobCandidateService>();
             services.AddSingleton<CandidateSkillService>();
+            services.AddDbContext<MyDbContext>(options =>
+            {
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+            });
             
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
